@@ -1,60 +1,34 @@
 import bpy
-from bpy.types import PropertyGroup
-from bpy.props import (
-    StringProperty,
-    BoolProperty,
-    IntProperty,
-    PointerProperty
-)
 
-
-class BatchRenameProperties(PropertyGroup):
-    base_name: StringProperty(
-        name="Base Name",
-        description="Base name for objects",
-        default="Object"
+class SleekRenamerProperties(bpy.types.PropertyGroup):
+    target: bpy.props.EnumProperty(
+        name="Target",
+        description="Objects to rename",
+        items=[('SELECTED', "Selected", "Only selected objects"),
+               ('ALL', "All", "All objects in scene")]
     )
-
-    use_prefix: BoolProperty(
-        name="Use Prefix",
-        default=False
+    find_str: bpy.props.StringProperty(
+        name="Find",
+        description="Text to find in the object name",
+        default=""
     )
-    prefix: StringProperty(
+    replace_str: bpy.props.StringProperty(
+        name="Replace",
+        description="Text to replace the found text with",
+        default=""
+    )
+    prefix: bpy.props.StringProperty(
         name="Prefix",
+        description="Text to add to the start of the name",
         default=""
     )
-
-    use_suffix: BoolProperty(
-        name="Use Suffix",
-        default=False
+    base_name: bpy.props.StringProperty(
+        name="Base Name",
+        description="Replace entire name with this (automatically adds numbering)",
+        default=""
     )
-    suffix: StringProperty(
+    suffix: bpy.props.StringProperty(
         name="Suffix",
+        description="Text to add to the end of the name",
         default=""
     )
-
-    use_numbering: BoolProperty(
-        name="Use Numbering",
-        default=True
-    )
-    start_number: IntProperty(
-        name="Start Number",
-        default=1,
-        min=0
-    )
-    padding: IntProperty(
-        name="Number Padding",
-        default=3,
-        min=1,
-        max=6
-    )
-
-
-def register():
-    bpy.utils.register_class(BatchRenameProperties)
-    bpy.types.Scene.batch_rename_props = PointerProperty(type=BatchRenameProperties)
-
-
-def unregister():
-    del bpy.types.Scene.batch_rename_props
-    bpy.utils.unregister_class(BatchRenameProperties)
