@@ -1,8 +1,15 @@
-# Blender Add-on Template
-This is a boilerplate template to help you organize your Blender add-on code. You can even install and enable the template as-is, even though it doesn't do anything. Happy Blending!
+# Batch Renamer for Blender
 
-## How to download
-Ready to make your own Blender add-on? Download the latest code, copy it to your project folder, and get started!
-    
-    git clone https://github.com/lunadigital/blender-addon-template
-    cp ./blender-addon-template/* /path/to/your/project/folder
+A lightweight, aesthetically pleasing batch renaming tool designed for Blender 4.5.5 LTS.
+
+## Features
+- **Targeted Renaming**: Choose to affect only your selected objects or everything in the scene.
+- **Search & Replace**: Easily swap out naming conventions across multiple objects.
+- **Prefix & Suffix**: Append text to the start or end of your object names.
+- **Base Naming**: Automatically rewrite and number your meshes sequentially (e.g., `Wall_001`, `Wall_002`).
+
+## Installation
+1. Download the `.zip` file containing this add-on.
+2. In Blender, go to `Edit` > `Preferences` > `Add-ons`.
+3. Click `Install...` and select the `.zip` file.
+4. Check the box next to "Object: Batch Renamer" to enable it.
